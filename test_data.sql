@@ -1,4 +1,4 @@
-\c biztime 
+\c test_biztime
 
 DROP TABLE IF EXISTS invoices
 CASCADE;
@@ -37,37 +37,4 @@ CREATE TABLE companies_industries (
   id serial PRIMARY KEY,
   company_code TEXT NOT NULL REFERENCES companies (code),
   industry_code TEXT NOT NULL REFERENCES industries (code)
-  -- PRIMARY KEY(code, code)
 );
-
-INSERT INTO
-  companies
-VALUES
-  ('apple', 'Apple Computer', 'Maker of OSX.'),
-  ('ibm', 'IBM', 'Big blue.');
-
-INSERT INTO
-  invoices (comp_code, amt, paid, paid_date)
-VALUES
-  ('apple', 100, false, null),
-  ('apple', 200, false, null),
-  ('apple', 300, true, '2018-01-01'),
-  ('ibm', 400, false, null);
-
-INSERT INTO
-  industries
-VALUES
-  ('tech', 'technology'),
-  ('consumer', 'consumer electronics'),
-  ('ai', 'artificial intelligence');
-
-INSERT INTO
-  companies_industries (company_code, industry_code)
-VALUES
-  ('apple', 'tech'),
-  ('apple', 'consumer'),
-  ('ibm', 'tech'),
-  ('ibm', 'ai');
-
-
-
